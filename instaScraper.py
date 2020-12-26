@@ -97,22 +97,7 @@ class Scraper:
         try:
             r = requests.get(self.main_url + '/' + self.target_username)
             s = BeautifulSoup(r.text, "html.parser") 
-	
-        	# finding meta info 
-            meta = s.find("meta", property ="og:description")  
-            
-            s = meta.attrs['content']
-            #splittting the content 
-        	# then taking the first part 
-            s = s.split("-")[0] 
-        	
-        	# again splitting the content 
-            s = s.split(" ") 
-        	
-        	# assigning the values 
-            self.Followers = s[0] 
-            self.Following = s[2] 
-            self.no_of_posts = int(s[4])  
+            self.no_of_posts = 100  
         except Exception:
             print('Some exception occurred while trying to find the number of posts.')
             sys.exit()
